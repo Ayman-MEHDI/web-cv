@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="format-detection" content="telephone=no"/>
   <title>Ayman MEHDI — Product Manager · Product Owner</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <style>
@@ -165,21 +166,38 @@
 
     /* RESPONSIVE */
     @media (max-width:960px) {
-      #hero { grid-template-columns:1fr; padding:8rem 2.5rem 4rem; gap:3rem; }
-      .hero-right { order:-1; }
-      .hero-left { text-align:center; }
+      #hero { grid-template-columns:1fr; padding:8rem 1.5rem 4rem; gap:2rem; }
+      #hero::after { display:none; }
+      .hero-right { order:-1; display:flex; justify-content:center; }
+      .hero-left { text-align:center; display:flex; flex-direction:column; align-items:center; }
+      .hero-roles { justify-content:center; flex-wrap:wrap; }
+      .hero-divider { margin-left:auto; margin-right:auto; }
+      .hero-desc { text-align:center; }
+      .hero-props { align-items:flex-start; max-width:340px; }
+      .hero-actions { justify-content:center; flex-wrap:wrap; }
+      .hero-stats { width:100%; max-width:420px; }
+      .avatar-ring { width:220px; height:220px; }
       .profil-grid, .ct-grid { grid-template-columns:1fr; }
     }
     @media (max-width:768px) {
       nav { left:1rem; right:1rem; transform:none; top:12px; justify-content:space-between; }
       .nav-links, .nav-sep { display:none; }
-      .s-inner, .ct-inner, .profil-inner { padding:4rem 1.5rem; }
-      .tl-item { grid-template-columns:1fr; gap:0.4rem; }
-      .sk-grid, .pj-grid, .cert-grid { grid-template-columns:1fr; }
+      .s-inner, .ct-inner, .profil-inner { padding:3.5rem 1.2rem; }
+      .tl-item { grid-template-columns:1fr; gap:0.3rem; }
+      .sk-grid { grid-template-columns:1fr 1fr; }
+      .pj-grid, .cert-grid { grid-template-columns:1fr; }
       .ct-bottom { grid-template-columns:1fr; }
       .ct-link { border-right:none; border-bottom:1px solid rgba(255,255,255,0.06); }
       .ct-link:last-child { border-bottom:none; }
-      footer { flex-direction:column; gap:0.4rem; }
+      footer { flex-direction:column; gap:0.4rem; text-align:center; }
+      .hero-stats { flex-wrap:wrap; }
+      .stat-item { flex:1 1 40%; }
+    }
+    @media (max-width:480px) {
+      .sk-grid { grid-template-columns:1fr; }
+      .hero-stats { flex-direction:column; }
+      .stat-item { border-left:none !important; border-top:1px solid var(--border); }
+      .stat-item:first-child { border-top:none; }
     }
   </style>
 </head>
