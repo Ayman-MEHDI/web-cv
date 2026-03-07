@@ -125,7 +125,10 @@
     .pj-sub-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
     .pj-sub-title { font-size:0.88rem; font-weight:700; color:var(--black); }
     .pj-sub-count { font-size:0.68rem; font-weight:600; color:var(--g400); background:var(--g100); border:1px solid var(--border); border-radius:100px; padding:0.1rem 0.5rem; }
-    .pj-card { background:var(--g50); border:1px solid var(--border); border-radius:18px; padding:2rem; transition:transform 0.25s,box-shadow 0.25s; position:relative; }
+    .pj-card { background:var(--g50); border:1px solid var(--border); border-radius:18px; padding:1.4rem 1.6rem; transition:transform 0.25s,box-shadow 0.25s; position:relative; display:flex; align-items:flex-start; gap:1.2rem; }
+    .pj-card-body { flex:1; min-width:0; }
+    .pj-card-body h3 { font-size:0.95rem; font-weight:700; margin-bottom:0.3rem; }
+    .pj-card-body p { font-size:0.78rem; color:var(--g600); line-height:1.65; font-weight:300; }
     .pj-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.08); }
     .pj-icon { width:44px; height:44px; border-radius:12px; background:var(--white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1.2rem; }
     .pj-card h3 { font-size:0.95rem; font-weight:700; margin-bottom:0.6rem; }
@@ -398,7 +401,7 @@
 <section id="projets">
   <div class="s-inner">
     <div class="s-eyebrow reveal">Réalisations</div>
-    <h2 class="s-title reveal">Produits &amp; projets phares</h2>
+    <h2 class="s-title reveal">Produits &amp; projets</h2>
     <p class="s-sub reveal">Des produits conçus et pilotés sur des infrastructures nationales critiques, des contributions sur des produits stratégiques existants, et des projets personnels qui témoignent d'une veille technologique active.</p>
     <!-- Créés from scratch -->
     <div class="pj-subsection reveal">
@@ -406,36 +409,40 @@
         <span class="pj-sub-dot" style="background:#16a34a;"></span>
         <h3 class="pj-sub-title">Créés from scratch</h3>
       </div>
-      <div class="pj-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="pj-grid">
         <div class="pj-card">
+          <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
           <div class="pj-icon">⚡</div>
+          <div class="pj-card-body">
+            <h3>Moteur de données clients</h3>
+            <p>Couvre 37M+ clients Enedis. Croisement et synchronisation quotidienne de données massives sur une architecture On-Premise.</p>
+            <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">Kafka</span><span class="pj-tag">37M+ clients</span></div>
+          </div>
+        </div><div class="pj-card">
           <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <h3>Moteur de données clients</h3>
-          <p>Couvre 37M+ clients Enedis. Croisement et synchronisation quotidienne de données massives sur une architecture On-Premise.</p>
-          <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">Kafka</span><span class="pj-tag">37M+ clients</span></div>
-        </div>
-        <div class="pj-card">
           <div class="pj-icon">🔔</div>
+          <div class="pj-card-body">
+            <h3>Notification Service — Transactionnel</h3>
+            <p>Dédié aux notifications GRC à destination des particuliers et entreprises (B2B). Génère des notifications multicanal selon des règles métier définies.</p>
+            <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span></div>
+          </div>
+        </div><div class="pj-card">
           <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <h3>Notification Service — Transactionnel</h3>
-          <p>Dédié aux notifications GRC à destination des particuliers et entreprises (B2B). Génère des notifications multicanal selon des règles métier définies.</p>
-          <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span></div>
-        </div>
-        <div class="pj-card">
           <div class="pj-icon">🔔</div>
-          <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <h3>Notification Service — Événementiel</h3>
-          <p>Orienté client final pour l'informer d'événements métier. Génère ≈1,5M notifications/mois (email &amp; SMS).</p>
-          <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span><span class="pj-tag">1,5M notifs/mois</span></div>
-        </div>
-        <div class="pj-card">
-          <div class="pj-icon">📋</div>
+          <div class="pj-card-body">
+            <h3>Notification Service — Événementiel</h3>
+            <p>Orienté client final pour l'informer d'événements métier. Génère ≈1,5M notifications/mois (email &amp; SMS).</p>
+            <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span><span class="pj-tag">1,5M notifs/mois</span></div>
+          </div>
+        </div><div class="pj-card">
           <span class="pj-role" data-tooltip="Rôle : Product Manager" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM</span>
-          <h3>Référentiel d'événements métier</h3>
-          <p>Produit stratégique centralisant l'ensemble des événements autour du client. Expose la donnée en mode push (notifications) et pull (consultation), servant de source de données pour l'ensemble des applications de la DSI.</p>
-          <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Push</span><span class="pj-tag">Pull</span><span class="pj-tag">DSI</span></div>
-        </div>
-      </div>
+          <div class="pj-icon">📋</div>
+          <div class="pj-card-body">
+            <h3>Référentiel d'événements métier</h3>
+            <p>Produit stratégique centralisant l'ensemble des événements autour du client. Expose la donnée en mode push (notifications) et pull (consultation), servant de source de données pour l'ensemble des applications de la DSI.</p>
+            <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Push</span><span class="pj-tag">Pull</span><span class="pj-tag">DSI</span></div>
+          </div>
+        </div></div>
     </div>
 
     <!-- Contributions produits -->
@@ -444,22 +451,24 @@
         <span class="pj-sub-dot" style="background:#3b82f6;"></span>
         <h3 class="pj-sub-title">Contributions produits</h3>
       </div>
-      <div class="pj-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="pj-grid">
         <div class="pj-card">
-          <div class="pj-icon">👥</div>
           <span class="pj-role" data-tooltip="Rôle : Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PO</span>
-          <h3>Référentiel de personnes physiques et morales</h3>
-          <p>Référentiel central regroupant l'ensemble des clients de l'entreprise — plus de 38 millions de personnes physiques et morales. Source de vérité pour l'ensemble des applications Enedis.</p>
-          <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">38M+ clients</span></div>
-        </div>
-        <div class="pj-card">
-          <div class="pj-icon">🗺️</div>
+          <div class="pj-icon">👥</div>
+          <div class="pj-card-body">
+            <h3>Référentiel de personnes physiques et morales</h3>
+            <p>Référentiel central regroupant l'ensemble des clients de l'entreprise — plus de 38 millions de personnes physiques et morales. Source de vérité pour l'ensemble des applications Enedis.</p>
+            <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">38M+ clients</span></div>
+          </div>
+        </div><div class="pj-card">
           <span class="pj-role" data-tooltip="Rôle : Product Manager" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM</span>
-          <h3>Application de visualisation cartographique</h3>
-          <p>Application interne permettant de visualiser sur carte les zones impactées par des événements métier. Récupération et exposition des événements en temps réel à destination des équipes internes Enedis.</p>
-          <div class="pj-footer"><span class="pj-tag">AWS</span><span class="pj-tag">Cartographie</span><span class="pj-tag">Temps réel</span><span class="pj-tag">Interne</span></div>
-        </div>
-      </div>
+          <div class="pj-icon">🗺️</div>
+          <div class="pj-card-body">
+            <h3>Application de visualisation cartographique</h3>
+            <p>Application interne permettant de visualiser sur carte les zones impactées par des événements métier. Récupération et exposition des événements en temps réel à destination des équipes internes Enedis.</p>
+            <div class="pj-footer"><span class="pj-tag">AWS</span><span class="pj-tag">Cartographie</span><span class="pj-tag">Temps réel</span><span class="pj-tag">Interne</span></div>
+          </div>
+        </div></div>
     </div>
 
     <!-- Projets personnels -->
@@ -468,15 +477,16 @@
         <span class="pj-sub-dot" style="background:var(--g400);"></span>
         <h3 class="pj-sub-title">Projets personnels</h3>
       </div>
-      <div class="pj-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="pj-grid">
         <div class="pj-card">
-          <div class="pj-icon">💻</div>
           <span class="pj-role" data-tooltip="Conçu en duo avec l'IA" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & AI</span>
-          <h3>Site web · CV interactif</h3>
-          <p>Conçu et développé from scratch en duo avec l'IA : expression du besoin, développements itératifs, recette, ajustements et mise en ligne — sans une seule ligne de code écrite à la main. La preuve concrète qu'un PM, armé des bons outils IA, peut aujourd'hui livrer un produit complet de bout en bout.</p>
-          <div class="pj-footer"><span class="pj-tag">HTML</span><span class="pj-tag">CSS</span><span class="pj-tag">JS</span><span class="pj-tag">Claude AI</span></div>
-        </div>
-      </div>
+          <div class="pj-icon">💻</div>
+          <div class="pj-card-body">
+            <h3>Site web · CV interactif</h3>
+            <p>Conçu et développé from scratch en duo avec l'IA : expression du besoin, développements itératifs, recette, ajustements et mise en ligne — sans une seule ligne de code écrite à la main. La preuve concrète qu'un PM, armé des bons outils IA, peut aujourd'hui livrer un produit complet de bout en bout.</p>
+            <div class="pj-footer"><span class="pj-tag">HTML</span><span class="pj-tag">CSS</span><span class="pj-tag">JS</span><span class="pj-tag">Claude AI</span></div>
+          </div>
+        </div></div>
     </div>
   </div>
 </section>
