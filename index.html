@@ -101,9 +101,11 @@
     /* COMPETENCES */
     #competences { background:var(--white); }
     .sk-grid { margin-top:3.5rem; display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:20px; overflow:hidden; background:var(--border); gap:1px; }
-    .sk-card { background:var(--white); padding:2rem; transition:background 0.2s; }
+    .sk-card { background:var(--white); padding:1.4rem 1.6rem; transition:background 0.2s; }
     .sk-card:hover { background:var(--g50); }
     .sk-icon { width:40px; height:40px; border-radius:10px; background:var(--g50); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.15rem; margin-bottom:1rem; }
+    .sk-card-header { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.6rem; }
+    .sk-card-header .sk-icon { margin-bottom:0; }
     .sk-card h3 { font-size:0.88rem; font-weight:700; margin-bottom:0.45rem; }
     .sk-card p { font-size:0.78rem; color:var(--g600); line-height:1.65; font-weight:300; }
 
@@ -125,14 +127,15 @@
     .pj-sub-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
     .pj-sub-title { font-size:0.88rem; font-weight:700; color:var(--black); }
     .pj-sub-count { font-size:0.68rem; font-weight:600; color:var(--g400); background:var(--g100); border:1px solid var(--border); border-radius:100px; padding:0.1rem 0.5rem; }
-    .pj-card { background:var(--g50); border:1px solid var(--border); border-radius:18px; padding:1.4rem 1.6rem; transition:transform 0.25s,box-shadow 0.25s; position:relative; display:flex; align-items:flex-start; gap:1.2rem; }
-    .pj-card-body { flex:1; min-width:0; }
-    .pj-card-body h3 { font-size:0.95rem; font-weight:700; margin-bottom:0.3rem; }
-    .pj-card-body p { font-size:0.78rem; color:var(--g600); line-height:1.65; font-weight:300; }
+    .pj-card { background:var(--g50); border:1px solid var(--border); border-radius:18px; padding:1.4rem 1.6rem; display:flex; align-items:center; gap:1.2rem; transition:transform 0.25s,box-shadow 0.25s; }
+    .pj-left { display:flex; flex-direction:column; align-items:center; gap:0.4rem; flex-shrink:0; width:52px; }
+    .pj-body { flex:1; min-width:0; }
+    .pj-body h3 { font-size:0.95rem; font-weight:700; margin-bottom:0.35rem; }
+    .pj-body p { font-size:0.78rem; color:var(--g600); line-height:1.65; font-weight:300; }
+    .pj-role-label { font-size:0.58rem; font-weight:700; color:#a0a0a0; text-align:center; white-space:nowrap; cursor:default; }
     .pj-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,0,0,0.08); }
-    .pj-icon { width:44px; height:44px; border-radius:12px; background:var(--white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:1.2rem; }
-    .pj-card h3 { font-size:0.95rem; font-weight:700; margin-bottom:0.6rem; }
-    .pj-card p { font-size:0.8rem; color:var(--g600); line-height:1.7; font-weight:300; }
+    .pj-icon { width:44px; height:44px; border-radius:12px; background:var(--white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
+
     .pj-footer { margin-top:1.4rem; padding-top:1rem; border-top:1px solid var(--border); display:flex; gap:0.4rem; flex-wrap:wrap; }
     .pj-tag { font-size:0.62rem; padding:0.18rem 0.55rem; border-radius:4px; background:var(--white); border:1px solid var(--border); color:var(--g600); font-weight:500; }
 
@@ -192,7 +195,7 @@
       .profil-grid, .ct-grid { grid-template-columns:1fr; }
     }
     @media (max-width:768px) {
-      nav { left:1rem; right:1rem; transform:none; top:12px; justify-content:space-between; }
+            nav { left:1rem; right:1rem; transform:none; top:12px; justify-content:space-between; }
       .nav-links, .nav-sep { display:none; }
       .s-inner, .ct-inner, .profil-inner { padding:3.5rem 1.2rem; }
       .tl-item { grid-template-columns:1fr; gap:0.3rem; }
@@ -289,7 +292,7 @@
       <div class="profil-card">
         <div class="profil-tag">Culture &amp; posture</div>
         <h3>Un PM qui parle tech</h3>
-        <p>Venu du métier, j'ai choisi l'IT — cette trajectoire me permet de comprendre les deux mondes. Contraintes métier et opérationnelles, langage des devs, logique des architectes : je sers de pont entre eux sans jamais perdre le fil de la valeur. Passionné par la tech, je maintiens une veille active en permanence — ce site web, conçu en duo avec l'IA, en est la preuve concrète.</p>
+        <p>9 ans dans le métier avant de rejoindre la DSI — une trajectoire volontaire qui me permet de comprendre les deux mondes de l'intérieur. Contraintes opérationnelles, langage des devs, logique des architectes : je sers de pont entre eux sans jamais perdre le fil de la valeur. Passionné par la tech, je maintiens une veille active en permanence — ce site web, conçu en duo avec l'IA, en est la preuve concrète.</p>
       </div>
     </div>
   </div>
@@ -299,7 +302,7 @@
   <div class="s-inner">
     <div class="s-eyebrow reveal">Parcours</div>
     <h2 class="s-title reveal">Expériences</h2>
-    <p class="s-sub reveal">14 ans sur des systèmes critiques — d'abord pour les opérer, aujourd'hui pour les concevoir.</p>
+    <p class="s-sub reveal">14 ans au cœur de systèmes critiques — du métier à la conception produit.</p>
     <div class="timeline">
       <div class="tl-item reveal">
         <div>
@@ -364,12 +367,12 @@
     <h2 class="s-title reveal">Compétences</h2>
     <p class="s-sub reveal">Une boîte à outils complète — de la vision stratégique à l'exécution technique, avec une maîtrise des deux rôles PM et PO.</p>
     <div class="sk-grid reveal">
-      <div class="sk-card"><div class="sk-icon">🎯</div><h3>Vision &amp; Stratégie</h3><p>Roadmaps, story mapping, OKR et pilotage de la valeur produit sur des portefeuilles multi-produits à grande échelle.</p></div>
-      <div class="sk-card"><div class="sk-icon" style="background:transparent;border:none;padding:0;overflow:hidden;"><img src="https://scaledagile.com/wp-content/uploads/2021/12/SAFe_icon.png" alt="SAFe" style="width:40px;height:40px;object-fit:contain;" onerror="this.parentElement.innerHTML='⚡'"/></div><h3>Agile &amp; SAFe SPC</h3><p>Scrum, Kanban, SAFe. Certifié SPC — je comprends et applique le framework à l'échelle, en coordination avec plusieurs équipes agiles.</p></div>
-      <div class="sk-card"><div class="sk-icon">📊</div><h3>Data &amp; SQL</h3><p>Analyse de données, définition de KPIs et prise de décision data-driven sur des volumes critiques (37M+ lignes).</p></div>
-      <div class="sk-card"><div class="sk-icon">🎨</div><h3>Design &amp; Figma</h3><p>Maquetterie, wireframes et collaboration UX/UI pour des produits à fort enjeu utilisateur final.</p></div>
-      <div class="sk-card"><div class="sk-icon">🔧</div><h3>Outils &amp; Tech</h3><p>Jira, Confluence, Miro, Klaxoon, Figma, Postman, DBeaver, Kafka. Un PM qui comprend l'architecture et parle le langage des devs.</p></div>
-      <div class="sk-card"><div class="sk-icon">🤝</div><h3>Leadership &amp; Influence</h3><p>Coordination transverse sans lien hiérarchique — métiers, architectes, équipes tech et partenaires externes.</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon">🎯</div><h3>Vision &amp; Stratégie</h3></div><p>Roadmaps, story mapping, OKR et pilotage de la valeur produit sur des portefeuilles multi-produits à grande échelle.</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon" style="overflow:hidden;"><img src="https://scaledagile.com/wp-content/uploads/2021/12/SAFe_icon.png" alt="SAFe" style="width:40px;height:40px;object-fit:contain;" onerror="this.parentElement.innerHTML='⚡'"/></div><h3>Agile &amp; SAFe SPC</h3></div><p>Scrum, Kanban, SAFe. Certifié SPC — je comprends et applique le framework à l'échelle, en coordination avec plusieurs équipes agiles.</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon">📊</div><h3>Data &amp; SQL</h3></div><p>Analyse de données, définition de KPIs et prise de décision data-driven sur des volumes critiques (37M+ lignes).</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon">🎨</div><h3>Design &amp; Figma</h3></div><p>Maquetterie, wireframes et collaboration UX/UI pour des produits à fort enjeu utilisateur final.</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon">🔧</div><h3>Outils &amp; Tech</h3></div><p>Jira, Confluence, Miro, Klaxoon, Figma, Postman, DBeaver, Kafka. Un PM qui comprend l'architecture et parle le langage des devs.</p></div>
+      <div class="sk-card"><div class="sk-card-header"><div class="sk-icon">🤝</div><h3>Leadership &amp; Influence</h3></div><p>Coordination transverse sans lien hiérarchique — métiers, architectes, équipes tech et partenaires externes.</p></div>
     </div>
   </div>
 </section>
@@ -411,38 +414,50 @@
       </div>
       <div class="pj-grid">
         <div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <div class="pj-icon">⚡</div>
-          <div class="pj-card-body">
+          <div class="pj-left">
+            <div class="pj-icon">⚡</div>
+            <span class="pj-role-label" data-tooltip="Product Manager & Product Owner">PM & PO</span>
+          </div>
+          <div class="pj-body">
             <h3>Moteur de données clients</h3>
             <p>Couvre 37M+ clients Enedis. Croisement et synchronisation quotidienne de données massives sur une architecture On-Premise.</p>
             <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">Kafka</span><span class="pj-tag">37M+ clients</span></div>
           </div>
-        </div><div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <div class="pj-icon">🔔</div>
-          <div class="pj-card-body">
+        </div>
+        <div class="pj-card">
+          <div class="pj-left">
+            <div class="pj-icon">🔔</div>
+            <span class="pj-role-label" data-tooltip="Product Manager & Product Owner">PM & PO</span>
+          </div>
+          <div class="pj-body">
             <h3>Notification Service — Transactionnel</h3>
             <p>Dédié aux notifications GRC à destination des particuliers et entreprises (B2B). Génère des notifications multicanal selon des règles métier définies.</p>
             <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span></div>
           </div>
-        </div><div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Manager & Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & PO</span>
-          <div class="pj-icon">🔔</div>
-          <div class="pj-card-body">
+        </div>
+        <div class="pj-card">
+          <div class="pj-left">
+            <div class="pj-icon">🔔</div>
+            <span class="pj-role-label" data-tooltip="Product Manager & Product Owner">PM & PO</span>
+          </div>
+          <div class="pj-body">
             <h3>Notification Service — Événementiel</h3>
             <p>Orienté client final pour l'informer d'événements métier. Génère ≈1,5M notifications/mois (email &amp; SMS).</p>
             <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Email</span><span class="pj-tag">SMS</span><span class="pj-tag">1,5M notifs/mois</span></div>
           </div>
-        </div><div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Manager" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM</span>
-          <div class="pj-icon">📋</div>
-          <div class="pj-card-body">
+        </div>
+        <div class="pj-card">
+          <div class="pj-left">
+            <div class="pj-icon">📋</div>
+            <span class="pj-role-label" data-tooltip="Product Manager">PM</span>
+          </div>
+          <div class="pj-body">
             <h3>Référentiel d'événements métier</h3>
             <p>Produit stratégique centralisant l'ensemble des événements autour du client. Expose la donnée en mode push (notifications) et pull (consultation), servant de source de données pour l'ensemble des applications de la DSI.</p>
             <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">Kafka</span><span class="pj-tag">Push</span><span class="pj-tag">Pull</span><span class="pj-tag">DSI</span></div>
           </div>
-        </div></div>
+        </div>
+      </div>
     </div>
 
     <!-- Contributions produits -->
@@ -453,22 +468,28 @@
       </div>
       <div class="pj-grid">
         <div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Owner" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PO</span>
-          <div class="pj-icon">👥</div>
-          <div class="pj-card-body">
+          <div class="pj-left">
+            <div class="pj-icon">👥</div>
+            <span class="pj-role-label" data-tooltip="Product Owner">PO</span>
+          </div>
+          <div class="pj-body">
             <h3>Référentiel de personnes physiques et morales</h3>
             <p>Référentiel central regroupant l'ensemble des clients de l'entreprise — plus de 38 millions de personnes physiques et morales. Source de vérité pour l'ensemble des applications Enedis.</p>
             <div class="pj-footer"><span class="pj-tag">Java</span><span class="pj-tag">On-Premise</span><span class="pj-tag">38M+ clients</span></div>
           </div>
-        </div><div class="pj-card">
-          <span class="pj-role" data-tooltip="Rôle : Product Manager" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM</span>
-          <div class="pj-icon">🗺️</div>
-          <div class="pj-card-body">
+        </div>
+        <div class="pj-card">
+          <div class="pj-left">
+            <div class="pj-icon">🗺️</div>
+            <span class="pj-role-label" data-tooltip="Product Manager">PM</span>
+          </div>
+          <div class="pj-body">
             <h3>Application de visualisation cartographique</h3>
             <p>Application interne permettant de visualiser sur carte les zones impactées par des événements métier. Récupération et exposition des événements en temps réel à destination des équipes internes Enedis.</p>
             <div class="pj-footer"><span class="pj-tag">AWS</span><span class="pj-tag">Cartographie</span><span class="pj-tag">Temps réel</span><span class="pj-tag">Interne</span></div>
           </div>
-        </div></div>
+        </div>
+      </div>
     </div>
 
     <!-- Projets personnels -->
@@ -479,14 +500,17 @@
       </div>
       <div class="pj-grid">
         <div class="pj-card">
-          <span class="pj-role" data-tooltip="Conçu en duo avec l'IA" style="position:absolute;top:1rem;right:1rem;font-size:0.62rem;font-weight:700;color:#a0a0a0;letter-spacing:0.04em;cursor:default;">PM & AI</span>
-          <div class="pj-icon">💻</div>
-          <div class="pj-card-body">
+          <div class="pj-left">
+            <div class="pj-icon">💻</div>
+            <span class="pj-role-label" data-tooltip="Conçu en duo avec l'IA">PM & AI</span>
+          </div>
+          <div class="pj-body">
             <h3>Site web · CV interactif</h3>
             <p>Conçu et développé from scratch en duo avec l'IA : expression du besoin, développements itératifs, recette, ajustements et mise en ligne — sans une seule ligne de code écrite à la main. La preuve concrète qu'un PM, armé des bons outils IA, peut aujourd'hui livrer un produit complet de bout en bout.</p>
             <div class="pj-footer"><span class="pj-tag">HTML</span><span class="pj-tag">CSS</span><span class="pj-tag">JS</span><span class="pj-tag">Claude AI</span></div>
           </div>
-        </div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
