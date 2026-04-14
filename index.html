@@ -47,10 +47,11 @@
     .hero-prop { display:flex; align-items:flex-start; gap:0.6rem; font-size:0.8rem; color:var(--g600); line-height:1.5; }
     .hero-prop::before { content:'✓'; font-size:0.7rem; font-weight:700; color:var(--black); background:var(--g100); width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.15rem; }
     .hero-actions { margin-top:2rem; display:flex; gap:0.75rem; opacity:0; animation:fadeUp 0.7s 0.5s ease forwards; }
-    .btn-dark { height:42px; padding:0 1.6rem; background:var(--black); color:#fff; border-radius:10px; text-decoration:none; font-size:0.84rem; font-weight:500; display:flex; align-items:center; gap:0.5rem; transition:opacity 0.15s,transform 0.15s; box-shadow:0 2px 10px rgba(0,0,0,0.18); }
+    .btn-dark { height:42px; padding:0 1.6rem; background:#0a0a0a; color:#ffffff; border-radius:10px; text-decoration:none; font-size:0.84rem; font-weight:500; display:flex; align-items:center; gap:0.5rem; transition:opacity 0.15s,transform 0.15s; box-shadow:0 2px 10px rgba(0,0,0,0.18); }
     .btn-dark:hover { opacity:0.8; transform:translateY(-2px); }
-    .btn-outline { height:42px; padding:0 1.6rem; border:1px solid var(--borderM); color:var(--g600); border-radius:10px; text-decoration:none; font-size:0.84rem; display:flex; align-items:center; transition:background 0.15s,color 0.15s,transform 0.15s; }
-    .btn-outline:hover { background:var(--g50); color:var(--black); transform:translateY(-2px); }
+    .btn-outline { height:42px; padding:0 1.6rem; border:1px solid rgba(0,0,0,0.15); color:#555555; background:#ffffff; border-radius:10px; text-decoration:none; font-size:0.84rem; font-weight:500; display:flex; align-items:center; transition:background 0.15s,color 0.15s,transform 0.15s; }
+    .btn-cv-hero { display:none; }
+    .btn-outline:hover { background:#f7f7f7; color:#0a0a0a; transform:translateY(-2px); }
     .hero-stats { display:flex; align-items:stretch; gap:0; margin-top:3rem; background:var(--g50); border:1px solid var(--border); border-radius:14px; overflow:hidden; opacity:0; animation:fadeUp 0.7s 0.58s ease forwards; }
     .stat-item { flex:1; padding:1.1rem 1rem; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; }
     .stat-item + .stat-item { border-left:1px solid var(--border); }
@@ -197,6 +198,7 @@
     @media (max-width:768px) {
             nav { left:1rem; right:1rem; transform:none; top:12px; justify-content:space-between; }
       .nav-links, .nav-sep { display:none; }
+      .nav-cv { display:none; }
       .s-inner, .ct-inner, .profil-inner { padding:3.5rem 1.2rem; }
       .tl-item { grid-template-columns:1fr; gap:0.3rem; }
       .sk-grid { grid-template-columns:1fr 1fr; }
@@ -226,10 +228,10 @@
     <li><a href="#experiences">Expériences</a></li>
     <li><a href="#competences">Compétences</a></li>
     <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
+    
   </ul>
   <div class="nav-sep"></div>
-  <a href="https://linkedin.com/in/ayman-mehdi" target="_blank" class="nav-cta">Me contacter</a>
+  <a href="#contact" class="nav-cta">Me contacter</a>
 </nav>
 
 <section id="hero">
@@ -249,7 +251,7 @@
     </div>
     <div class="hero-actions">
       <a href="#experiences" class="btn-dark">Voir mon parcours ↓</a>
-      <a href="#contact" class="btn-outline">Me contacter</a>
+      <a href="./CV_Ayman_MEHDI_Product_Manager.pdf" download class="btn-dark">Télécharger CV <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:0.3rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
     </div>
     <div class="hero-stats">
       <div class="stat-item"><div class="stat-num">37M+</div><div class="stat-lbl">clients couverts</div></div>
