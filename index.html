@@ -654,6 +654,29 @@
       io.observe(el);
     }
   });
+
+  // Fix : navigation interne sans hash dans l'URL
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
+  // Si la page charge avec un hash, scroller proprement puis nettoyer l'URL
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', window.location.pathname);
+      }, 100);
+    }
+  }
 </script>
 </body>
 </html>
