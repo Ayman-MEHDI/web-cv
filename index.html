@@ -28,14 +28,14 @@
 
     /* NAV */
     nav { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:300; display:flex; align-items:center; height:44px; padding:0 6px; background:rgba(255,255,255,0.92); backdrop-filter:blur(24px); border:1px solid var(--borderM); border-radius:100px; box-shadow:0 4px 24px rgba(0,0,0,0.07); white-space:nowrap; }
-    .nav-logo { display:flex; align-items:center; gap:0.5rem; padding:0 1rem; font-size:0.85rem; font-weight:700; letter-spacing:-0.03em; color:var(--black); text-decoration:none; }
+    .nav-logo { display:flex; align-items:center; gap:0.5rem; padding:0 0.65rem; font-size:0.85rem; font-weight:700; letter-spacing:-0.03em; color:var(--black); text-decoration:none; }
     .nav-pulse { width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px rgba(34,197,94,0.15); flex-shrink:0; animation:pulse 2.5s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(0.7);opacity:0.4;} }
-    .nav-sep { width:1px; height:18px; background:var(--g200); margin:0 2px; flex-shrink:0; }
+    .nav-sep { width:1px; height:18px; background:var(--g200); margin:0 4px; flex-shrink:0; }
     .nav-links { display:flex; list-style:none; }
-    .nav-links a { padding:0 0.8rem; height:32px; display:flex; align-items:center; font-size:0.78rem; color:var(--g400); text-decoration:none; border-radius:100px; transition:color 0.15s,background 0.15s; }
+    .nav-links a { padding:0 0.55rem; height:32px; display:flex; align-items:center; font-size:0.78rem; color:var(--g400); text-decoration:none; border-radius:100px; transition:color 0.15s,background 0.15s; }
     .nav-links a:hover { color:var(--black); background:var(--g100); }
-    .nav-cta { height:32px; padding:0 1rem; margin-left:4px; background:var(--black); color:#fff; border-radius:100px; text-decoration:none; font-size:0.78rem; font-weight:500; display:flex; align-items:center; transition:opacity 0.15s; }
+    .nav-cta { height:32px; padding:0 0.75rem; margin-left:0.5rem; background:var(--black); color:#fff; border-radius:100px; text-decoration:none; font-size:0.78rem; font-weight:500; display:flex; align-items:center; transition:opacity 0.15s; }
     .nav-cta:hover { opacity:0.75; }
 
     /* HERO */
@@ -236,7 +236,7 @@
     <li><a href="#experiences">Expériences</a></li>
     <li><a href="#competences">Compétences</a></li>
     <li><a href="#certifications">Certifications</a></li>
-    
+    <li><a href="./CV_Ayman_MEHDI_Product_Manager.pdf" download onclick="gtag('event','cv_download',{event_category:'engagement',event_label:'CV_Ayman_MEHDI_Product_Manager.pdf'})">Télécharger CV</a></li>
   </ul>
   <div class="nav-sep"></div>
   <a href="#contact" class="nav-cta">Me contacter</a>
