@@ -1,0 +1,9 @@
+# Fichiers temporaires et scripts de setup
+*.bat
+*.ps1
+*.log
+*-log.txt
+
+# OS
+.DS_Store
+Thumbs.db
