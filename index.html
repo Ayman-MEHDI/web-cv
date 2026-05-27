@@ -166,7 +166,7 @@
     .ct-form { display:flex; flex-direction:column; gap:0.7rem; }
     .ct-form input, .ct-form textarea { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.7rem 1rem; color:#fff; font-size:0.82rem; font-family:inherit; outline:none; transition:border 0.2s; }
     .ct-form input:focus, .ct-form textarea:focus { border-color:rgba(255,255,255,0.3); }
-    .ct-form input::placeholder, .ct-form textarea::placeholder { color:rgba(255,255,255,0.25); }
+    .ct-form input::placeholder, .ct-form textarea::placeholder { color:rgba(255,255,255,0.55); }
     .ct-form textarea { resize:none; }
     .ct-bottom { border:1px solid rgba(255,255,255,0.08); border-radius:16px; overflow:hidden; margin-top:1.2rem; display:grid; grid-template-columns:repeat(3,1fr); }
     .ct-link { display:flex; align-items:center; gap:1rem; padding:1.4rem 1.6rem; text-decoration:none; border-right:1px solid rgba(255,255,255,0.06); transition:background 0.15s; }
@@ -175,12 +175,12 @@
     .ct-link-icon { width:34px; height:34px; border-radius:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-size:0.95rem; flex-shrink:0; }
     .ct-lbl { font-size:0.62rem; color:rgba(255,255,255,0.55); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.2rem; }
     .ct-val { font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.8); }
-    .ct-arrow { margin-left:auto; font-size:0.75rem; color:rgba(255,255,255,0.2); }
+    .ct-arrow { margin-left:auto; font-size:0.75rem; color:rgba(255,255,255,0.55); }
     .form-success { display:none; color:var(--green); font-size:0.82rem; margin-top:0.6rem; }
 
     /* FOOTER */
     footer { background:var(--black); border-top:1px solid rgba(255,255,255,0.06); padding:1.4rem 2rem; display:flex; align-items:center; justify-content:center; gap:2rem; }
-    footer p { font-size:0.71rem; color:rgba(255,255,255,0.2); }
+    footer p { font-size:0.71rem; color:rgba(255,255,255,0.55); }
 
     /* ANIMATIONS */
     @keyframes fadeUp { from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
@@ -223,6 +223,59 @@
       .hero-stats { flex-direction:column; }
       .stat-item { border-left:none !important; border-top:1px solid var(--border); }
       .stat-item:first-child { border-top:none; }
+    }
+
+    /* A11Y — FOCUS VISIBLE */
+    a:focus { outline:none; }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline:2px solid var(--black);
+      outline-offset:3px;
+      border-radius:6px;
+    }
+    #profil a:focus-visible,
+    #contact a:focus-visible,
+    #contact button:focus-visible,
+    #contact input:focus-visible,
+    #contact textarea:focus-visible,
+    footer a:focus-visible {
+      outline-color:#ffffff;
+    }
+    .ct-form input:focus-visible,
+    .ct-form textarea:focus-visible {
+      outline-offset:2px;
+    }
+
+    /* A11Y — TOUCH TARGETS (mobile) */
+    @media (max-width:768px) {
+      nav { height:56px; }
+      .nav-cta { height:44px; padding:0 1.1rem; font-size:0.82rem; }
+      .nav-logo { padding:0 0.85rem; }
+    }
+
+    /* A11Y — REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after {
+        animation-duration:0.001ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:0.001ms !important;
+        scroll-behavior:auto !important;
+      }
+      .nav-pulse,
+      .role-dot,
+      .avatar-ring::before { animation:none !important; }
+      .hero-roles,
+      h1,
+      .hero-divider,
+      .hero-desc,
+      .hero-props,
+      .hero-actions,
+      .hero-stats,
+      .avatar-wrap { opacity:1 !important; animation:none !important; }
+      .reveal { opacity:1 !important; transform:none !important; }
     }
   </style>
 </head>
@@ -581,7 +634,7 @@
 
 <footer>
   <p>© 2026 Ayman MEHDI — Product Manager · Product Owner</p>
-  <div style="font-size:0.68rem;color:rgba(255,255,255,0.2)">Conçu avec Claude AI</div>
+  <div style="font-size:0.68rem;color:rgba(255,255,255,0.55)">Conçu avec Claude AI</div>
 </footer>
 
 <script>
