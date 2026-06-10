@@ -1,0 +1,47 @@
+name: Recette DEV
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  recette:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Attendre la propagation GitHub Pages
+        run: sleep 120
+
+      - name: Check 1 - Page dev-preview repond
+        run: |
+          STATUS=$(curl -s -o /tmp/page.html -w "%{http_code}" https://ayman-mehdi.github.io/web-cv/dev-preview/)
+          echo "Status: $STATUS"
+          test "$STATUS" = "200"
+
+      - name: Check 2 - PDF telechargeable
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -I https://ayman-mehdi.github.io/web-cv/dev-preview/CV_Ayman_MEHDI_Product_Manager.pdf)
+          echo "Status PDF: $STATUS"
+          test "$STATUS" = "200"
+
+      - name: Check 3 - Les 6 sections presentes
+        run: |
+          for s in hero profil experiences competences certifications contact; do
+            grep -q "id=\"$s\"" /tmp/page.html && echo "OK section $s" || { echo "MANQUANT $s"; exit 1; }
+          done
+
+      - name: Check 4 - Liens de navigation
+        run: |
+          for l in profil experiences competences certifications contact; do
+            grep -q "href=\"#$l\"" /tmp/page.html && echo "OK nav $l" || { echo "MANQUANT nav $l"; exit 1; }
+          done
+
+      - name: Check 5 - Google Analytics
+        run: grep -q "G-CGZQSXC15M" /tmp/page.html
+
+      - name: Check 6 - Google Fonts
+        run: grep -q "fonts.googleapis.com" /tmp/page.html
+
+      - name: Bilan
+        run: echo "RECETTE COMPLETE - TOUS LES CHECKS PASSES"
