@@ -7,3 +7,9 @@
 # OS
 .DS_Store
 Thumbs.db
+
+# Mémoire Claude (local uniquement)
+CLAUDE.md
+TODO.md
+DECISIONS.md
+CHANGELOG.md
