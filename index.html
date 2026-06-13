@@ -263,7 +263,7 @@
       50% { opacity: 0.7; transform: scale(0.82); box-shadow: 0 0 0 6px rgba(168,191,143,0); }
     }
     .hero h1 {
-      font-size: clamp(2.6rem, 6vw, 4.7rem);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
       font-weight: 500;
       letter-spacing: -0.035em;
       line-height: 1.04;
@@ -417,7 +417,7 @@
     .cell h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
     .cell p { margin-top: 12px; font-size: 14.5px; color: var(--text-2); line-height: 1.62; }
     .cell-portrait { padding: 0; min-height: 280px; }
-    .cell-portrait img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .cell-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; position: absolute; inset: 0; }
     .cell-portrait::after {
       content: '';
       position: absolute; inset: 0;
@@ -721,6 +721,8 @@
     @media (max-width: 860px) {
       .nav-links { display: none; }
       .bento-row-1, .bento-row-2 { grid-template-columns: 1fr; }
+      .cell-portrait { min-height: 440px; }
+      .cell-portrait img { object-position: center 18%; }
       .hero-stats { grid-template-columns: 1fr; gap: 22px; }
       .hstat { border-left: none; padding: 0; justify-content: flex-start; gap: 24px; }
       .hstat-orb { order: 2; margin-left: auto; }
@@ -768,7 +770,7 @@
   <div class="wrap hero-core">
     <span class="hero-kicker reveal"><span class="dot"></span>Product Manager · Product Owner</span>
     <h1 class="reveal" style="--i:1">Je transforme la complexité métier en produits <em>à grande échelle</em></h1>
-    <p class="reveal" style="--i:2">Jusqu'à 37 millions d'utilisateurs. 5 produits créés from scratch chez Enedis. Un profil hybride : vision stratégique PM, rigueur delivery PO.</p>
+    <p class="reveal" style="--i:2">Jusqu'à 37 millions d'utilisateurs. 4 produits créés from scratch et 5 applications pilotées chez Enedis. Un profil hybride : vision stratégique PM, rigueur delivery PO.</p>
     <div class="hero-cta reveal lift" style="--i:3">
       <a href="#experiences" class="btn btn-white">Voir mon parcours</a>
       <a href="./CV_Ayman_MEHDI_Product_Manager.pdf" download class="btn btn-glass" onclick="gtag('event','cv_download',{event_category:'engagement',event_label:'CV_Ayman_MEHDI_Product_Manager.pdf'})">
@@ -868,7 +870,7 @@
       <article class="cell reveal" style="--i:0">
         <div class="cell-tag">En tant que Product Owner</div>
         <h3>Je sais comment y arriver</h3>
-        <p>Backlog ownership, cérémonies agile, rédaction des user stories, coordination technique et rigueur delivery. J'ai construit 5 produits from scratch chez Enedis, du besoin métier jusqu'à la mise en service.</p>
+        <p>Backlog ownership, cérémonies agile, rédaction des user stories, coordination technique et rigueur delivery. J'ai construit 4 produits from scratch chez Enedis, du besoin métier jusqu'à la mise en service.</p>
       </article>
       <article class="cell reveal" style="--i:1">
         <div class="cell-tag">Ce qui me différencie</div>
@@ -969,12 +971,12 @@
         <div class="num-cap">clients couverts par le moteur de données</div>
       </div>
       <div class="num-cell reveal" style="--i:1">
-        <div class="num-val" data-count="5" data-suffix="">0</div>
+        <div class="num-val" data-count="4" data-suffix="">0</div>
         <div class="num-cap">produits créés from scratch chez Enedis</div>
       </div>
       <div class="num-cell reveal" style="--i:2">
-        <div class="num-val" data-count="1.5" data-decimals="1" data-suffix="M">0</div>
-        <div class="num-cap">notifications générées par mois (email &amp; SMS)</div>
+        <div class="num-val" data-count="5" data-suffix="">0</div>
+        <div class="num-cap">mises en service, validées par le métier avec satisfaction</div>
       </div>
       <div class="num-cell reveal" style="--i:3">
         <div class="num-val" data-count="14" data-suffix=" ans">0</div>
@@ -1411,7 +1413,7 @@
   if (hasGsap) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to('#heroMedia', { yPercent: 16, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
-    gsap.to('.hero-core', { yPercent: -12, opacity: 0.3, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '80% top', scrub: true } });
+    gsap.to('.hero-core', { yPercent: -8, opacity: 0.55, ease: 'none', scrollTrigger: { trigger: '.hero', start: '32% top', end: 'bottom top', scrub: true } });
     function parallaxImg(selector, triggerSel, range) {
       document.querySelectorAll(selector).forEach(function (img) {
         var trig = img.closest(triggerSel) || img.parentElement;
