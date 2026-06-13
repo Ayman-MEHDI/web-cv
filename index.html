@@ -65,51 +65,6 @@
 
     .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-    /* ---- glass cursor ---- */
-    body.glass-cursor-on, body.glass-cursor-on * { cursor: none !important; }
-    .glass-cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 38px; height: 38px;
-      margin: -19px 0 0 -19px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 200;
-      opacity: 0;
-      background: radial-gradient(circle at 32% 26%, rgba(255,255,255,0.18), rgba(255,255,255,0.02) 52%, rgba(255,255,255,0.10) 100%);
-      border: 1px solid rgba(255,255,255,0.45);
-      box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.55),
-        inset 0 -3px 5px rgba(255,255,255,0.16),
-        inset 3px 0 4px rgba(255,255,255,0.10),
-        inset -1px -1px 2px rgba(11,12,10,0.12),
-        0 6px 18px rgba(0,0,0,0.22);
-      backdrop-filter: blur(3px) saturate(165%) brightness(1.07);
-      -webkit-backdrop-filter: blur(3px) saturate(165%) brightness(1.07);
-      transition: opacity 0.3s var(--ease);
-      will-change: transform;
-    }
-    .glass-cursor::before {
-      content: '';
-      position: absolute;
-      inset: 1.5px;
-      border-radius: 50%;
-      border: 1.5px solid transparent;
-      border-top-color: rgba(255,255,255,0.5);
-      border-left-color: rgba(255,255,255,0.18);
-      transform: rotate(-12deg);
-    }
-    .glass-cursor::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 3px; height: 3px;
-      margin: -1.5px 0 0 -1.5px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.85);
-    }
-    .glass-cursor.visible { opacity: 1; }
-
     /* ---- reveal animation ---- */
     .reveal {
       opacity: 0;
@@ -787,7 +742,6 @@
 <body>
 
 <div class="grain" aria-hidden="true"></div>
-<div class="glass-cursor" id="glassCursor" aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <nav class="nav-shell" id="navShell">
@@ -1278,7 +1232,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1344,32 +1297,6 @@
     var markHeroLoaded = function () { heroBg.classList.add('loaded'); };
     if (heroBg.complete && heroBg.naturalWidth) markHeroLoaded();
     else { heroBg.addEventListener('load', markHeroLoaded); heroBg.addEventListener('error', markHeroLoaded); }
-  }
-
-  /* ---- glass cursor ---- */
-  var gc = document.getElementById('glassCursor');
-  if (gc && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
-    document.body.classList.add('glass-cursor-on');
-    var gcx = -100, gcy = -100, gctx = -100, gcty = -100, gcs = 1, gcsT = 1, gcRaf = null;
-    document.addEventListener('mousemove', function (e) {
-      gctx = e.clientX; gcty = e.clientY;
-      gc.classList.add('visible');
-      if (!gcRaf) gcRaf = requestAnimationFrame(gcFrame);
-      var hot = e.target.closest && e.target.closest('a, button, .btn, input, textarea');
-      gcsT = hot ? 1.55 : 1;
-    }, { passive: true });
-    document.addEventListener('mousedown', function () { gcsT = 0.85; });
-    document.addEventListener('mouseup', function (e) {
-      gcsT = (e.target.closest && e.target.closest('a, button, .btn')) ? 1.55 : 1;
-    });
-    document.documentElement.addEventListener('mouseleave', function () { gc.classList.remove('visible'); });
-    document.documentElement.addEventListener('mouseenter', function () { gc.classList.add('visible'); });
-    function gcFrame() {
-      gcx += (gctx - gcx) * 0.22; gcy += (gcty - gcy) * 0.22; gcs += (gcsT - gcs) * 0.18;
-      gc.style.transform = 'translate3d(' + gcx.toFixed(1) + 'px,' + gcy.toFixed(1) + 'px,0) scale(' + gcs.toFixed(3) + ')';
-      var settled = Math.abs(gctx - gcx) < 0.05 && Math.abs(gcty - gcy) < 0.05 && Math.abs(gcsT - gcs) < 0.002;
-      gcRaf = settled ? null : requestAnimationFrame(gcFrame);
-    }
   }
 
   /* ---- hero cursor refraction (raw WebGL, no deps) ---- */
@@ -1478,27 +1405,11 @@
     })();
   }
 
-  /* ---- smooth scroll + scroll choreography (GSAP / Lenis) ---- */
+  /* ---- scroll choreography (GSAP ScrollTrigger, scroll natif) ---- */
   var hasGsap = !!(window.gsap && window.ScrollTrigger) && !reduceMotion;
   var heroMedia = document.getElementById('heroMedia');
   if (hasGsap) {
     gsap.registerPlugin(ScrollTrigger);
-    if (window.Lenis) {
-      var lenis = new Lenis({ duration: 1.15 });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          var id = a.getAttribute('href');
-          if (id.length > 1 && document.querySelector(id)) {
-            e.preventDefault();
-            lenis.scrollTo(id, { offset: -64, duration: 1.4 });
-            history.replaceState(null, '', window.location.pathname);
-          }
-        });
-      });
-    }
     gsap.to('#heroMedia', { yPercent: 16, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero-core', { yPercent: -12, opacity: 0.3, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '80% top', scrub: true } });
     function parallaxImg(selector, triggerSel, range) {
@@ -1547,15 +1458,13 @@
     el.addEventListener('mouseleave', function () { tooltipBox.style.opacity = '0'; tooltipBox.style.visibility = 'hidden'; });
   });
 
-  /* ---- fallback smooth-scroll + clean URL (when GSAP/Lenis absent) ---- */
-  if (!hasGsap || !window.Lenis) {
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); history.replaceState(null, '', window.location.pathname); }
-      });
+  /* ---- ancres : smooth-scroll natif + URL propre ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); history.replaceState(null, '', window.location.pathname); }
     });
-  }
+  });
   if (window.location.hash) {
     var t = document.querySelector(window.location.hash);
     if (t) setTimeout(function () { t.scrollIntoView({ behavior: 'smooth' }); history.replaceState(null, '', window.location.pathname); }, 120);
