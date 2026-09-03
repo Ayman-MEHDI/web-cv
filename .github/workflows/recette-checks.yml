@@ -1,0 +1,75 @@
+name: Recette (checks communs)
+
+# Workflow reutilisable : les recettes DEV et PROD l'appellent avec leur URL.
+# Un check ajoute ici s'applique automatiquement aux deux environnements.
+
+on:
+  workflow_call:
+    inputs:
+      url:
+        description: "URL de base a recetter (avec le / final)"
+        required: true
+        type: string
+      env_name:
+        description: "Nom de l'environnement, pour les logs"
+        required: true
+        type: string
+      wait_seconds:
+        description: "Attente avant les checks, le temps que GitHub Pages propage"
+        required: false
+        default: 120
+        type: number
+
+jobs:
+  recette:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Attendre la propagation GitHub Pages
+        run: sleep ${{ inputs.wait_seconds }}
+
+      - name: Check 1 - Page repond
+        run: |
+          URL="${{ inputs.url }}?cb=${{ github.run_id }}-${{ github.run_attempt }}"
+          STATUS=$(curl -s -H "Cache-Control: no-cache" -o /tmp/page.html -w "%{http_code}" "$URL")
+          echo "[${{ inputs.env_name }}] Status page : $STATUS"
+          test "$STATUS" = "200"
+          # version sans la photo en base64, pour les checks de contenu
+          sed 's/base64,[^"]*/base64,PHOTO/g' /tmp/page.html > /tmp/page-texte.html
+
+      - name: Check 2 - PDF telechargeable
+        run: |
+          URL="${{ inputs.url }}CV_Ayman_MEHDI_Product_Manager.pdf?cb=${{ github.run_id }}-${{ github.run_attempt }}"
+          STATUS=$(curl -s -H "Cache-Control: no-cache" -o /dev/null -w "%{http_code}" -I "$URL")
+          echo "[${{ inputs.env_name }}] Status PDF : $STATUS"
+          test "$STATUS" = "200"
+
+      - name: Check 3 - Les 6 sections presentes
+        run: |
+          for s in hero profil experiences competences certifications contact; do
+            grep -q "id=\"$s\"" /tmp/page.html && echo "OK section $s" || { echo "MANQUANT $s"; exit 1; }
+          done
+
+      - name: Check 4 - Liens de navigation
+        run: |
+          for l in profil experiences competences certifications contact; do
+            grep -q "href=\"#$l\"" /tmp/page.html && echo "OK nav $l" || { echo "MANQUANT nav $l"; exit 1; }
+          done
+
+      - name: Check 5 - Google Analytics
+        run: grep -q "G-CGZQSXC15M" /tmp/page.html
+
+      - name: Check 6 - Google Fonts
+        run: grep -q "fonts.googleapis.com" /tmp/page.html
+
+      - name: Check 7 - Volumetrie a jour (40M+, plus aucun 3xM)
+        run: |
+          if grep -aqE "3[0-9] ?M\+?|3[0-9] millions" /tmp/page-texte.html; then
+            echo "Volumetrie obsolete detectee :"
+            grep -aoE "3[0-9] ?M\+?|3[0-9] millions" /tmp/page-texte.html | sort -u
+            exit 1
+          fi
+          grep -aqF "40M+" /tmp/page-texte.html || { echo "MANQUANT : 40M+"; exit 1; }
+          echo "OK volumetrie"
+
+      - name: Bilan
+        run: echo "RECETTE ${{ inputs.env_name }} COMPLETE - TOUS LES CHECKS PASSES"

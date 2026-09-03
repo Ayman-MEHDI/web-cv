@@ -1,14 +1,14 @@
-name: Recette DEV
+name: Recette PROD
 
 on:
   push:
     branches:
-      - dev
+      - prod
   workflow_dispatch:
 
 jobs:
   recette:
     uses: ./.github/workflows/recette-checks.yml
     with:
-      url: "https://ayman-mehdi.github.io/web-cv/dev-preview/"
-      env_name: DEV
+      url: "https://ayman-mehdi.github.io/web-cv/"
+      env_name: PROD
