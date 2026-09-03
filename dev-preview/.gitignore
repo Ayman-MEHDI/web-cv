@@ -1,0 +1,18 @@
+# Fichiers temporaires et scripts de setup
+*.bat
+*.ps1
+*.log
+*-log.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config preview locale Claude
+.claude/
+
+# Mémoire Claude (local uniquement)
+CLAUDE.md
+TODO.md
+DECISIONS.md
+CHANGELOG.md
