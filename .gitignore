@@ -8,6 +8,9 @@
 .DS_Store
 Thumbs.db
 
+# Config preview locale Claude
+.claude/
+
 # Mémoire Claude (local uniquement)
 CLAUDE.md
 TODO.md
